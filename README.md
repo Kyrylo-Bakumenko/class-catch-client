@@ -27,7 +27,7 @@ Class Catch is a powerful and user-friendly web application designed to help stu
 
 ## Demo
 
-Explore the [live demo]([https://your-vercel-deployment-url.vercel.app](https://class-catch-client.vercel.app/classes]) to see Class Catch in action!
+Explore the [live demo]([https://your-vercel-deployment-url.vercel.app](https://class-catch-client.vercel.app/]) to see Class Catch in action!
 
 ## Getting Started
 
