@@ -192,7 +192,7 @@ export default function Filters({
       </section>
 
       {/* Language Requirements */}
-      <section>
+      {/* <section>
         <button
           onClick={() => setLangOpen(!langOpen)}
           className="w-full text-left font-semibold border-b border-gray-200 pb-1 mb-2"
@@ -213,7 +213,7 @@ export default function Filters({
             ))}
           </div>
         )}
-      </section>
+      </section> */}
 
       {/* Periods */}
       <section>
