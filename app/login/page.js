@@ -11,8 +11,10 @@ export default function LoginPage() {
   const router = useRouter();
 
   const setToken = useAuthStore((state) => state.setToken);
+  const setUser = useAuthStore((state) => state.setUser);
 
-  const BASE_URL = process.env.BACKEND_URL || "http://localhost:8000";
+  const BASE_URL =
+    process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8000";
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -33,6 +35,19 @@ export default function LoginPage() {
       // data.token should be returned from the DRF token auth endpoint
       setToken(data.token);
 
+      // fetch user data for store
+      const userRes = await fetch(`${BASE_URL}/api/user/`, {
+        headers: {
+          Authorization: `Token ${data.token}`,
+        },
+      });
+
+      if (!userRes.ok) {
+        throw new Error("Failed to fetch user details");
+      }
+      const userData = await userRes.json();
+      setUser(userData); // store user details in Zustand
+
       // Navigate to profile
       router.push("/profile");
     } catch (err) {
@@ -40,10 +55,11 @@ export default function LoginPage() {
     }
   };
 
-  // const handleCasLogin = () => {
-  //   // full reload and redirect to CAS
-  //   window.location.href = "http://localhost:8000/cas/login/";
-  // };
+  // do nothing as CAS is not implemented yetc
+  const handleCasLogin = () => {
+    //   // full reload and redirect to CAS
+    //   window.location.href = "http://localhost:8000/cas/login/";
+  };
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-4">
@@ -76,9 +92,9 @@ export default function LoginPage() {
               Log In
             </button>
             <button
+              disabled={true}
               onClick={handleCasLogin}
               className="bg-brandGreen text-white px-4 py-2 rounded cursor-not-allowed bg-opacity-50"
-              disabled={true}
             >
               Login with Dartmouth SSO
             </button>

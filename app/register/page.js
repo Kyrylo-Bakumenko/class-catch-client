@@ -11,7 +11,7 @@ export default function RegisterPage() {
   const [success, setSuccess] = useState(false);
   const router = useRouter();
 
-  const BASE_URL = process.env.BACKEND_URL || "http://localhost:8000";
+  const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8000";
 
   const handleRegister = async (e) => {
     e.preventDefault();

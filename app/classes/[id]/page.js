@@ -106,7 +106,7 @@ export default function ClassDetailPage({ params }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const BASE_URL = process.env.BACKEND_URL; // || "http://localhost:8000";
+  const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL; // || "http://localhost:8000";
 
   const fetchData = async () => {
     setLoading(true);
