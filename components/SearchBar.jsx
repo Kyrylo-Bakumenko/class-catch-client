@@ -33,7 +33,7 @@ export default function SearchBar({ onSearchChange }) {
         placeholder="Search classes..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        className="flex-1 p-2 border rounded focus:outline-none"
+        className="px-4 py-2 rounded-lg border focus:outline-none"
       />
 
       {/* Quick lookup icons (favorites, hot classes) */}

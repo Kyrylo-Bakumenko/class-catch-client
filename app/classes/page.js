@@ -332,7 +332,6 @@ export default function ClassesPage() {
           <div className="flex items-center flex-1 space-x-2">
             {/* Search Bar */}
             <SearchBar onSearchChange={setSearch} />
-
             {/* Range-based filter chip if user has classCode/minNumber */}
             {subjectRangeLabel && (
               <FilterChip
