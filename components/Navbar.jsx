@@ -6,31 +6,31 @@ export default function Navbar() {
     <nav className="sticky top-0 z-50 flex items-center justify-between px-4 py-3 bg-brandGreen text-white shadow">
       <div className="flex items-center space-x-4">
         <span className="text-lg font-bold">
-          <a href="/" className="hover:text-brandGreen-light transition-colors">
+          <Link href="/" className="hover:text-brandGreen-light transition-colors">
             ClassCatch
-          </a>
+          </Link>
         </span>
         {/* Navigation links on larger screens */}
         <div className="hidden md:flex space-x-4">
-          <a
+          <Link
             href="/classes"
             className="hover:text-brandGreen-light transition-colors"
           >
             Classes
-          </a>
+          </Link>
           {/* TEMP REMOVING -- FINISH LATER */}
-          {/* <a
+          {/* <Link
             href="/research"
             className="hover:text-brandGreen-light transition-colors"
           >
             Research
-          </a> */}
-          <a
+          </Link> */}
+          <Link
             href="/plan"
             className="hover:text-brandGreen-light transition-colors"
           >
             Planning
-          </a>
+          </Link>
         </div>
       </div>
       <div className="flex items-center space-x-4">
