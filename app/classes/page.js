@@ -242,6 +242,7 @@ export default function ClassesPage() {
     allowed,
     orParam,
     initialized,
+    BASE_URL, // technically dependent on the env var
   ]);
 
   const handleCardClick = (classObj) => {

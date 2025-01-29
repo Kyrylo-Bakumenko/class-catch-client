@@ -12,25 +12,25 @@ export default function Navbar() {
         </span>
         {/* Navigation links on larger screens */}
         <div className="hidden md:flex space-x-4">
-          <a
+          <Link
             href="/classes"
             className="hover:text-brandGreen-light transition-colors"
           >
             Classes
-          </a>
+          </Link>
           {/* TEMP REMOVING -- FINISH LATER */}
-          {/* <a
+          {/* <Link
             href="/research"
             className="hover:text-brandGreen-light transition-colors"
           >
             Research
-          </a> */}
-          <a
+          </Link> */}
+          <Link
             href="/plan"
             className="hover:text-brandGreen-light transition-colors"
           >
             Planning
-          </a>
+          </Link>
         </div>
       </div>
       <div className="flex items-center space-x-4">

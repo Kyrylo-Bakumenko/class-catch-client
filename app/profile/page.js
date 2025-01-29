@@ -20,7 +20,7 @@ export default function ProfilePage() {
   const hydrated = useStoreHydration();
   const token = useAuthStore((state) => state.token);
   const router = useRouter();
-  const BASE_URL = process.env.BACKEND_URL || "http://localhost:8000";
+  const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8000";
 
   useEffect(() => {
     if (!hydrated) return; // use global check

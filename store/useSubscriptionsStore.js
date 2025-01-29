@@ -3,7 +3,7 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { useAuthStore } from "./useAuthStore";
 
-const BASE_URL = process.env.BACKEND_URL || "http://localhost:8000";
+const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8000";
 
 export const useSubscriptionsStore = create(
   persist(

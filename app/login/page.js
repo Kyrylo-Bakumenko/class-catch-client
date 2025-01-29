@@ -12,7 +12,7 @@ export default function LoginPage() {
 
   const setToken = useAuthStore((state) => state.setToken);
 
-  const BASE_URL = process.env.BACKEND_URL || "http://localhost:8000";
+  const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8000";
 
   const handleLogin = async (e) => {
     e.preventDefault();
