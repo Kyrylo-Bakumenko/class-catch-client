@@ -97,7 +97,7 @@ export default function HomePage() {
               </Link>
             )}
             <Link
-              href="/planning"
+              href="/plan"
               className="bg-white border-2 border-brandGreen text-brandGreen px-6 py-3 rounded hover:bg-brandGreen-light transition-colors"
             >
               My Planning
