@@ -40,10 +40,11 @@ export default function LoginPage() {
     }
   };
 
-  // const handleCasLogin = () => {
+  // do nothing as CAS is not implemented yetc
+  const handleCasLogin = () => {
   //   // full reload and redirect to CAS
   //   window.location.href = "http://localhost:8000/cas/login/";
-  // };
+  };
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-4">
@@ -76,9 +77,9 @@ export default function LoginPage() {
               Log In
             </button>
             <button
+              disabled={true}
               onClick={handleCasLogin}
               className="bg-brandGreen text-white px-4 py-2 rounded cursor-not-allowed bg-opacity-50"
-              disabled={true}
             >
               Login with Dartmouth SSO
             </button>

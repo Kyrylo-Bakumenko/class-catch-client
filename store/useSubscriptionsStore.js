@@ -20,7 +20,7 @@ export const useSubscriptionsStore = create(
         set({ loadingSubs: true, errorSubs: null });
         try {
           const res = await fetch(
-            f`${BASE_URL}/api/user/subscriptions/`,
+            `${BASE_URL}/api/user/subscriptions/`,
             {
               headers: {
                 Authorization: `Token ${token}`,
@@ -46,9 +46,9 @@ export const useSubscriptionsStore = create(
         }
         const body = {
           subscribed_class_id: classId,
-          email: email || "kirill.bakumenko.2016@gmail.com",
+          email: email
         };
-        const res = await fetch(`http://localhost:8000/api/subscriptions/`, {
+        const res = await fetch(`${BASE_URL}/api/subscriptions/`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -94,7 +94,7 @@ export const useSubscriptionsStore = create(
         const subscriptionId = sub.id;
 
         const res = await fetch(
-          `http://localhost:8000/api/subscriptions/${subscriptionId}/`,
+          `${BASE_URL}/api/subscriptions/${subscriptionId}/`,
           {
             method: "DELETE",
             headers: {

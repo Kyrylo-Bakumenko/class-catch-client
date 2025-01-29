@@ -11,6 +11,7 @@ import FilterChip from "@/components/FilterChip";
 // import CalendarPicker from "@/components/CalendarPicker";
 import { useSubscriptionsStore } from "@/store/useSubscriptionsStore";
 import { useAuthStore } from "@/store/useAuthStore";
+import { Suspense } from "react";
 
 export default function ClassesPage() {
   const searchParams = useSearchParams();
@@ -40,11 +41,15 @@ export default function ClassesPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  // retrieve both token and user from the auth store
+  const token = useAuthStore((state) => state.token);
+  const user = useAuthStore((state) => state.user);
+
   const { subscribeToClass, unsubscribeFromClass, isClassSubscribed } =
     useSubscriptionsStore();
 
-  const token = useAuthStore((state) => state.token);
-  const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8000";
+  const BASE_URL =
+    process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8000";
 
   // For mobile, we might just show a button at the top to toggle a modal with filters # TO CHANGE
   /*     WE MAY WANT TO SLIDE OUT AND REPLACE SEARCH RSULTS WITH FILTER MENU      */
@@ -200,7 +205,12 @@ export default function ClassesPage() {
       // if there is an orParam => "class_code=COSC&min_number=30&max_number=89|class_code=MATH&min_number=20"
       if (orParam) {
         const finalOr = encodeURIComponent(orParam);
-        console.log("[DEBUG] fetchClasses => orParam raw:", orParam, " => finalOr:", finalOr);
+        console.log(
+          "[DEBUG] fetchClasses => orParam raw:",
+          orParam,
+          " => finalOr:",
+          finalOr
+        );
         url += `&or_filter=${finalOr}`;
       }
 
@@ -252,8 +262,13 @@ export default function ClassesPage() {
 
   // on subscribe:
   const handleSubscribe = async (classObj) => {
+    if (!user || !user.email) {
+      alert("Please log in to subscribe to classes.");
+      return;
+    }
     try {
-      await subscribeToClass(classObj.id, "kirill.bakumenko.2016@gmail.com");
+      // Use user.email from the auth store
+      await subscribeToClass(classObj.id, user.email);
       alert(`Subscribed to ${classObj.title} successfully!`);
     } catch (e) {
       alert("Subscription failed: " + e.message);
@@ -335,7 +350,7 @@ export default function ClassesPage() {
               />
             ))}
 
-            {/* orParam => single chip with “OR Filter” text */ }
+            {/* orParam => single chip with “OR Filter” text */}
             {orParam && (
               <FilterChip label={`OR Filter`} onRemove={handleRemoveOrParam} />
             )}
